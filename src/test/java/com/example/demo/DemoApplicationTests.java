@@ -15,9 +15,20 @@ class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
-		dsl.createTable("table")
-      .column("col1", INTEGER)
-      .execute();
+
+	}
+
+	@Test
+	void doSomethingWithTheDatatabaseWithJooq() {
+		dsl.dropTableIfExists("users").execute();
+		var x = dsl.createTable("users")
+				.column("id", INTEGER)
+				.column("name", VARCHAR)
+				// .primaryKey("id")
+				.execute();
+
+		System.out.println(x);
+
 	}
 
 }
