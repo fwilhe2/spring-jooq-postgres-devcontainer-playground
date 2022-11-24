@@ -15,11 +15,13 @@ class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
-
+		System.out.println(">>> test 1");
 	}
 
 	@Test
 	void doSomethingWithTheDatatabaseWithJooq() {
+		System.out.println(">>> test 2");
+
 		dsl.dropTableIfExists("users").execute();
 		var x = dsl.createTable("users")
 				.column("id", INTEGER)
@@ -27,7 +29,7 @@ class DemoApplicationTests {
 				// .primaryKey("id")
 				.execute();
 
-		System.out.println(x);
+		System.out.println(">>> createTable: " + x);
 
 	}
 
