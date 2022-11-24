@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Pre-build image and run make ci-build in dev container
+      uses: devcontainers/ci@v0.2
+      with:
+        imageName: ghcr.io/example/example-devcontainer
+        cacheFrom: ghcr.io/example/example-devcontainer
+        push: never
+        runCmd: ./gradlew check
